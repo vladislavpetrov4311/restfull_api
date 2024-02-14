@@ -1,19 +1,21 @@
 <?php
-$host = 'my_bd';
-$username = 'root';
-$password = 'root';
-$database = 'testDB';
 
-$connect = mysqli_connect($host, $username , $password, $database);
+header('Content-type: application/json');
+require 'connect.php';
 
 
-if($connect)
-echo "всё ок!";
+$sql = "SELECT * FROM `Q1`;";
+$posts = mysqli_query($connect , $sql);
 
+$postslist = [];
 
+while ($post = mysqli_fetch_assoc($posts)) {
 
+    $postslist[] = $post;
 
+}
 
+echo json_encode($postslist, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 
 
