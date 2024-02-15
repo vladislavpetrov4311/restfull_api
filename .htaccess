@@ -2,4 +2,4 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^posts$ posts.php [L]
+RewriteRule ^(.+)$ posts.php?q=$1 [L,QSA]
