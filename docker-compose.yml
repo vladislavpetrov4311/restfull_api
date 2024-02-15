@@ -2,7 +2,7 @@ version: '3'
 
 services:
   myapp:
-    image: aboutphp-myapp
+    image: restapi-myapp
     volumes: 
       - ./:/var/www/html
     ports:
