@@ -2,23 +2,28 @@
 
 header('Content-type: application/json');
 require 'connect.php';
+require 'function.php';
 
 $type = $_GET['q'];
 
+$params = explode('/' , $type);
+
+$type = $params[0];
+$id = $params[1];
+
+
 if($type ==='posts')
 {
-$sql = "SELECT * FROM `Q1`;";
-$posts = mysqli_query($connect , $sql);
 
-$postslist = [];
+    if($id!= NULL)
+    {
+        getpost($connect , $id);
+    }
+    else
+    {
+        getposts($connect);
+    }
 
-while ($post = mysqli_fetch_assoc($posts)) {
-
-    $postslist[] = $post;
-
-}
-
-echo json_encode($postslist, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 }
 
 
