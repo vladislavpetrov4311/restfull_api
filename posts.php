@@ -7,9 +7,9 @@ require 'function.php';
 $method = $_SERVER['REQUEST_METHOD'];
 
 
-$type = $_GET['q'];
+$q = $_GET['q'];
 
-$params = explode('/' , $type);
+$params = explode('/' , $q);
 
 $type = $params[0];
 $id = $params[1];
