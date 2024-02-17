@@ -31,4 +31,19 @@ function getpost($connect , $id)
 }
 
 
+
+function addpost($connect , $data)
+{
+    
+    $id = $data['id'];
+    $tittle = $data['tittle'];
+    $body = $data['body'];
+
+    $sql = "INSERT INTO `Q1` (`id` , `tittle` , `body`) VALUES ($id, '$tittle', '$body');";
+    $post = mysqli_query($connect , $sql);
+
+}
+
+
+
 ?>

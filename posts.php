@@ -1,5 +1,6 @@
 <?php
 
+
 header('Content-type: application/json');
 require 'connect.php';
 require 'function.php';
@@ -31,6 +32,15 @@ if($method ==='GET')
         }
     
     }
+
+}
+else if($method ==='POST')
+{
+    if($type === 'posts')
+    {
+        addpost($connect , $_POST);
+    }
+
 
 }
 
