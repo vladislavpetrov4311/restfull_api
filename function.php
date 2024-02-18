@@ -56,4 +56,13 @@ function updatepost($connect , $data, $id)
 }
 
 
+
+function deletepost($connect , $id)
+{
+
+    $sql = "DELETE FROM `Q1` WHERE `id` = $id";
+    $post = mysqli_query($connect , $sql);
+
+}
+
 ?>

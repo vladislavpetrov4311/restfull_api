@@ -58,7 +58,19 @@ else if($method ==='PATCH')
     }
 
 }
+else if($method ==='DELETE')
+{
 
+    if($type ==='posts')
+    {
+    
+        if($id!= NULL)
+        {
+            deletepost($connect , $id);
+        }
+    }
+
+}
 
 
 
