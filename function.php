@@ -34,16 +34,26 @@ function getpost($connect , $id)
 
 function addpost($connect , $data)
 {
-    
+   
     $id = $data['id'];
     $tittle = $data['tittle'];
     $body = $data['body'];
 
     $sql = "INSERT INTO `Q1` (`id` , `tittle` , `body`) VALUES ($id, '$tittle', '$body');";
     $post = mysqli_query($connect , $sql);
-
+    
 }
 
+
+function updatepost($connect , $data, $id)
+{
+   $tittle = $data['tittle'];
+   $body = $data['body'];
+
+   $sql = "UPDATE `Q1` SET `tittle` = '$tittle', `body` = '$body' WHERE `id` = $id;";
+   $post = mysqli_query($connect , $sql);
+
+}
 
 
 ?>

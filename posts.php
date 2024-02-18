@@ -43,6 +43,21 @@ else if($method ==='POST')
 
 
 }
+else if($method ==='PATCH')
+{
+
+    if($type ==='posts')
+    {
+    
+        if($id!= NULL)
+        {
+            $data = file_get_contents('php://input');
+            $data = json_decode($data, true);
+            updatepost($connect , $data , $id);
+        }
+    }
+
+}
 
 
 
