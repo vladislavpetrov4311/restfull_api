@@ -1,0 +1,43 @@
+<html>
+
+<meta charset="UTF-8">
+<title>Myblog</title>
+
+<style>
+    center1 {
+    text-align: center;
+    }
+    body {
+    background: #333; /* Цвет фона */
+    color: #fc0; /* Цвет текста */
+   }
+   leftOfCenter {
+    position: relative;
+    left: 40%; /* Сдвигаем блок влево на 10% */
+     text-align: left; /* Выравниваем текст в блоке влево */
+}
+</style>
+
+<body>
+
+<center1>
+    <div class = "post-list">
+
+    </div>
+</center1>
+
+<leftOfCenter>
+    <form>
+  <input type="text" id="my_id">      
+  <p>Название</p>
+  <input type="text" id="my_tittle">
+  <p>Описание</p>
+  <input type="text" id="my_body">
+  <br>
+  <button type="button" onclick="addpost()">Отправить</button>
+    </form>
+</leftOfCenter>
+
+<script src = "1.js"></script>
+</body>
+</html>
