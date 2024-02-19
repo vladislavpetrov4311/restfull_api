@@ -4,12 +4,13 @@ async function getposts()
     let posts = await res.json();
 
     document.querySelector('.post-list').innerHTML = '';
-    
+
    posts.forEach((post)=>{
         document.querySelector('.post-list').innerHTML += `
         <h5>${post.tittle}</h5>
         <p>${post.body}</p>
         <a href = "#">Подробнее</a>
+        <a href = "#" onclick="deletepost(${post.id})">Удалить</a>
         `
     })
 
@@ -38,4 +39,18 @@ async function addpost()
     document.getElementById("my_id").value = "";
     document.getElementById("my_tittle").value = "";
     document.getElementById("my_body").value = "";
+}
+
+
+async function deletepost(id)
+{
+
+   console.log(id);
+    let res = await fetch(`http://localhost:9000/posts/${id}` , {
+        method: 'DELETE'
+    });
+
+
+    await getposts();
+
 }
