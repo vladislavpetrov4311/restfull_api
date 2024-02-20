@@ -11,6 +11,7 @@ async function getposts()
         <p>${post.body}</p>
         <a href = "#">Подробнее</a>
         <a href = "#" onclick="deletepost(${post.id})">Удалить</a>
+        <a href = "#" onclick="oldpost(${post.id}, '${post.tittle}', '${post.body}')">Изменить</a>
         `
     })
 
@@ -45,12 +46,22 @@ async function addpost()
 async function deletepost(id)
 {
 
-   console.log(id);
     let res = await fetch(`http://localhost:9000/posts/${id}` , {
         method: 'DELETE'
     });
 
 
     await getposts();
+
+}
+
+
+
+async function oldpost(id, tittle, body)
+{
+
+    document.getElementById("upd_id").value = id;
+    document.getElementById("upd_tittle").value = tittle;
+    document.getElementById("upd_body").value = body;
 
 }
