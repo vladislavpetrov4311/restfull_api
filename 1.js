@@ -65,3 +65,31 @@ async function oldpost(id, tittle, body)
     document.getElementById("upd_body").value = body;
 
 }
+
+async function updatepost()
+{
+
+    let new_id = document.getElementById("upd_id").value;
+    let new_tittle = document.getElementById("upd_tittle").value;
+    let new_body = document.getElementById("upd_body").value;
+
+   let data = {
+        tittle: new_tittle,
+        body: new_body
+    };
+
+
+    let res = await fetch(`http://localhost:9000/posts/${new_id}` , {
+        method: 'PATCH',
+        body: JSON.stringify(data)
+    });
+
+
+    await getposts();
+
+    document.getElementById("upd_id").value = "";
+    document.getElementById("upd_tittle").value = "";
+    document.getElementById("upd_body").value = "";
+}
+
+getposts();
