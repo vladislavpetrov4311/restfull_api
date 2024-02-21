@@ -1,3 +1,5 @@
+let new_id = null;
+
 async function getposts()
 {
     let res = await fetch('http://localhost:9000/posts');
@@ -9,7 +11,6 @@ async function getposts()
         document.querySelector('.post-list').innerHTML += `
         <h5>${post.tittle}</h5>
         <p>${post.body}</p>
-        <a href = "#">Подробнее</a>
         <a href = "#" onclick="deletepost(${post.id})">Удалить</a>
         <a href = "#" onclick="oldpost(${post.id}, '${post.tittle}', '${post.body}')">Изменить</a>
         `
@@ -20,12 +21,10 @@ async function getposts()
 async function addpost()
 {
 
-    let row_id = document.getElementById("my_id").value;
     let row_tittle = document.getElementById("my_tittle").value;
     let row_body = document.getElementById("my_body").value;
     
     let formdada = new FormData();
-    formdada.append('id', row_id);
     formdada.append('tittle' , row_tittle);
     formdada.append('body' , row_body);
 
@@ -37,7 +36,6 @@ async function addpost()
     await getposts();
 
 
-    document.getElementById("my_id").value = "";
     document.getElementById("my_tittle").value = "";
     document.getElementById("my_body").value = "";
 }
@@ -56,11 +54,10 @@ async function deletepost(id)
 }
 
 
-
 async function oldpost(id, tittle, body)
 {
 
-    document.getElementById("upd_id").value = id;
+    new_id = id;
     document.getElementById("upd_tittle").value = tittle;
     document.getElementById("upd_body").value = body;
 
@@ -69,7 +66,6 @@ async function oldpost(id, tittle, body)
 async function updatepost()
 {
 
-    let new_id = document.getElementById("upd_id").value;
     let new_tittle = document.getElementById("upd_tittle").value;
     let new_body = document.getElementById("upd_body").value;
 
@@ -87,7 +83,6 @@ async function updatepost()
 
     await getposts();
 
-    document.getElementById("upd_id").value = "";
     document.getElementById("upd_tittle").value = "";
     document.getElementById("upd_body").value = "";
 }
